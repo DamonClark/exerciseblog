@@ -39,7 +39,8 @@ a {
   padding: 7em 0 0 0;
   border-right: 1px solid #d6dce0;
   #logo {
-    width: 40px;
+    width: 175px;
+    font-size: 0.9em;
     position: absolute;
     right: 3em;
     top: 3em;
@@ -50,14 +51,14 @@ a {
     padding-right: 3em;
     .category {
       font-weight: 700;
-      font-size: 0.7em;
+      font-size: 0.8em;
       text-transform: uppercase;
       color: #33acb7;
     }
     li {
       padding: .5em 0;
+      color: #9eafba;
       a {
-        color: #9eafba;
         text-decoration: none;
         transition: all .4s ease;
         &:hover {
