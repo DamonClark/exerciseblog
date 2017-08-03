@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.3.4'
 
 gem 'rails', '4.2.3'
 gem 'sass-rails', '~> 5.0'
@@ -11,6 +11,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise', '~> 3.4.0'
 gem 'json', '~> 1.4'
+gem 'rails_12factor'
+gem 'puma'
 
 group :development, :test do
   gem 'byebug'
