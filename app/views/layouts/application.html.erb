@@ -2,68 +2,70 @@
 <html>
 <head>
   <title>Damon Clark</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script src="https://use.fontawesome.com/3c2437f763.js"></script> 
 </head>
 <body>
-  <div id="sidebar">
-    <div id="logo">
-      <%= link_to root_path do %>
-        <strong><h1>Damon Clark</h1></strong>
+    <div id="sidebar">
+      <div id="logo">
+        <%= link_to root_path do %>
+          <strong><h1>Damon Clark</h1></strong>
+        <% end %>
+      </div>
+    
+      <ul>
+        <li class="category">Website</li>
+        <li><%= link_to "Resume", asset_path("/Damon Clark.pdf"), target: '_blank' %>
+        <li><%= link_to "Blog", root_path %> </li>
+        <li><%= link_to "Projects", project_path %> </li>
+      </ul>
+
+      <ul>
+        <li class="category">Social</li>
+        <li><a href="https://github.com/damonclark">GitHub <i class="fa fa-github fa-1x" aria-hidden="true"></i></a></li>
+        <li><a href="https://stackoverflow.com/users/4399317/damon-clark?tab=profile">StackOverflow <i class="fa fa-stack-overflow fa-1x" aria-hidden="true"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/damon-clark-06262431/">LinkedIn <i class="fa fa-linkedin fa-1x" aria-hidden="true"></i></a></li>
+        <li><a href="mailto:dclark312@gmail.com">Email <i class="fa fa-envelope-o fa-1x" aria-hidden="true"></i></a></li>
+      </ul>
+
+      <% if !user_signed_in? %>
+        <p class="sign_in"><%= link_to('Admin Login', new_user_session_path)  %></p>
       <% end %>
     </div>
-  
-    <ul>
-      <li class="category">Website</li>
-      <li><%= link_to "Resume", asset_path("/Damon Clark.pdf") %>
-      <li><%= link_to "Blog", root_path %> </li>
-      <li><%= link_to "Projects", project_path %> </li>
-    </ul>
 
-    <ul>
-      <li class="category">Social</li>
-      <li><a href="https://github.com/damonclark">GitHub <i class="fa fa-github fa-1x" aria-hidden="true"></i></a></li>
-      <li><a href="https://stackoverflow.com/users/4399317/damon-clark?tab=profile">StackOverflow <i class="fa fa-stack-overflow fa-1x" aria-hidden="true"></i></a></li>
-      <li><a href="https://www.linkedin.com/in/damon-clark-06262431/">LinkedIn <i class="fa fa-linkedin fa-1x" aria-hidden="true"></i></a></li>
-      <li><a href="mailto:dclark312@gmail.com">Email <i class="fa fa-envelope-o fa-1x" aria-hidden="true"></i></a></li>
-    </ul>
+    <div id="main_content">
+      <div id="header">
+        <% if current_page?(root_path) %>
+            <p>All Posts</p>
+        <% elsif current_page?(about_path) %>
+            <p>About</p>
+        <% elsif current_page?(project_path) %>
+            <p>Projects</p>
+        <% else %>
+          <%= link_to "Back to All Posts", root_path %>
+        <% end %>
 
-    <% if !user_signed_in? %>
-      <p class="sign_in"><%= link_to('Admin Login', new_user_session_path)  %></p>
-    <% end %>
-  </div>
+        <% if user_signed_in? %>
+          <div class="buttons">
+             <button class="button"><%= link_to "New Post", new_post_path %></button>
+             <button class="button"><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></button>
+          </div>
+        <% end %>
 
-  <div id="main_content">
-    <div id="header">
-      <% if current_page?(root_path) %>
-          <p>All Posts</p>
-      <% elsif current_page?(about_path) %>
-          <p>About</p>
-      <% elsif current_page?(project_path) %>
-          <p>Projects</p>
-      <% else %>
-        <%= link_to "Back to All Posts", root_path %>
+      </div>
+
+      <% flash.each do |name, msg| %>
+        <%= content_tag(:div, msg, class: "alert") %>
       <% end %>
 
-      <% if user_signed_in? %>
-        <div class="buttons">
-           <button class="button"><%= link_to "New Post", new_post_path %></button>
-           <button class="button"><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></button>
-        </div>
-      <% end %>
-
+      <%= yield %>
+      </div>
     </div>
 
-    <% flash.each do |name, msg| %>
-      <%= content_tag(:div, msg, class: "alert") %>
-    <% end %>
-
-    <%= yield %>
-  </div>
-
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 </body>
 </html>
