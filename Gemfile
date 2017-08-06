@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise', '~> 3.4.0'
 gem 'json', '~> 1.4'
 gem 'rails_12factor'
+gem 'pdfjs_rails'
 
 group :development, :test do
   gem 'byebug'
