@@ -20,9 +20,10 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <ul>
           <li class="category">Website</li>
-          <li><%= link_to "Resume", asset_path("/Damon Clark.pdf"), target: '_blank' %>
+          <li><%= link_to "About", about_path %></li>
           <li><%= link_to "Blog", root_path %> </li>
           <li><%= link_to "Projects", project_path %> </li>
+          <li><%= link_to "Resume", asset_path("/Damon Clark.pdf"), target: '_blank' %>
         </ul>
 
         <ul>

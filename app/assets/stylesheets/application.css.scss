@@ -29,6 +29,10 @@ a {
   color: inherit;
 }
 
+#contentabout {
+  max-width: 600px;
+  padding: 10px;
+}
 @media only screen and (min-width: 479px) {
 
   #sidebar {
@@ -389,6 +393,9 @@ a {
     display: none !important;
   }
 
+  #post_content {
+    padding: 15px;
+  }
   @media screen and (max-height: 450px) {
     .sidenav { padding-top: 15px;}
     .sidenav a { font-size: 18px; }
