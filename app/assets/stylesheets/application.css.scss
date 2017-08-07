@@ -29,7 +29,7 @@ a {
   color: inherit;
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 479px) {
 
   #sidebar {
     width: 250px;
@@ -270,23 +270,31 @@ a {
       }
     }
   }
+
+  #opennav {
+      display: none !important;
+  }
+
+  .closebtn {
+      display: none !important;
+  }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 479px) {
     body {
       position: absolute;
       width: 100%;
       background: #f5f7f9;
       text-align: center;
     }
+
     #sidebar {
-      background: #f5f7f9;
       text-decoration: none;
       #logo {
       }
       ul {
       list-style: none;
-      padding-right: 25px;
+      text-align: left;
       .category {
         font-weight: 500;
         font-size: 0.8em;
@@ -336,5 +344,53 @@ a {
         }
       }
     }
+  }
+
+  .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+  }
+
+  .sidenav a {
+      padding: 4px 4px 4px 32px;
+      text-decoration: none;
+      font-size: 20px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+  }
+
+  .sidenav a:hover, .offcanvas a:focus{
+      color: #f1f1f1;
+  }
+
+  .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 15px;
+  }
+
+  #opennav {
+    float: left;
+    padding-left: 1em;
+  }
+
+  .sign_in {
+    display: none !important;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidenav { padding-top: 15px;}
+    .sidenav a { font-size: 18px; }
   }
 }

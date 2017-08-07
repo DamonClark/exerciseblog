@@ -10,30 +10,30 @@
 </head>
 <body>
     <div id="sidebar">
+      <span id="opennav" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
       <div id="logo">
         <%= link_to root_path do %>
           <strong><h1>Damon Clark</h1></strong>
         <% end %>
       </div>
-    
-      <ul>
-        <li class="category">Website</li>
-        <li><%= link_to "Resume", asset_path("/Damon Clark.pdf"), target: '_blank' %>
-        <li><%= link_to "Blog", root_path %> </li>
-        <li><%= link_to "Projects", project_path %> </li>
-      </ul>
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <ul>
+          <li class="category">Website</li>
+          <li><%= link_to "Resume", asset_path("/Damon Clark.pdf"), target: '_blank' %>
+          <li><%= link_to "Blog", root_path %> </li>
+          <li><%= link_to "Projects", project_path %> </li>
+        </ul>
 
-      <ul>
-        <li class="category">Social</li>
-        <li><a href="https://github.com/damonclark">GitHub <i class="fa fa-github fa-1x" aria-hidden="true"></i></a></li>
-        <li><a href="https://stackoverflow.com/users/4399317/damon-clark?tab=profile">StackOverflow <i class="fa fa-stack-overflow fa-1x" aria-hidden="true"></i></a></li>
-        <li><a href="https://www.linkedin.com/in/damon-clark-06262431/">LinkedIn <i class="fa fa-linkedin fa-1x" aria-hidden="true"></i></a></li>
-        <li><a href="mailto:dclark312@gmail.com">Email <i class="fa fa-envelope-o fa-1x" aria-hidden="true"></i></a></li>
-      </ul>
-
-      <% if !user_signed_in? %>
-        <p class="sign_in"><%= link_to('Admin Login', new_user_session_path)  %></p>
-      <% end %>
+        <ul>
+          <li class="category">Social</li>
+          <li><a href="https://github.com/damonclark">GitHub <i class="fa fa-github fa-1x" aria-hidden="true"></i></a></li>
+          <li><a href="https://stackoverflow.com/users/4399317/damon-clark?tab=profile">StackOverflow <i class="fa fa-stack-overflow fa-1x" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/damon-clark-06262431/">LinkedIn <i class="fa fa-linkedin fa-1x" aria-hidden="true"></i></a></li>
+          <li><a href="mailto:dclark312@gmail.com">Email <i class="fa fa-envelope-o fa-1x" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+      <p class="sign_in"><%= link_to('Admin Login', new_user_session_path)  %></p>
     </div>
 
     <div id="main_content">
@@ -67,5 +67,16 @@
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
+
+    <script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+    </script>
 </body>
 </html>
